@@ -1,20 +1,62 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="header shadows"><span>Dashboard</span></div>
+<div class="page">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12 side-container">
+        <input class="btn btn-default btn-info" type="button" value="Refresh" (click)="refreshList()">
+        <input class="btn btn-default btn-success" type="button" value="Generate Offers" (click)="generateOffers()">
+        <input class="btn btn-default btn-danger" type="button" value="Clear Offers" (click)="clearOffers()">
+      </div>
+      <div class="col-sm-12 side-container">
 
+        <h2>Users</h2>
+
+        <div class="user-wrapper row">
+
+
+          <div class="col-sm-6" *ngFor="let account of accounts">
+            <div class="row userCard shadows">
+              <h2 style="color: #0000fe; margin-top: 15px; text-align: left" class="col-sm-6"><b><i>{{
+                account.first_name
+                }}</i></b> {{ account.last_name }} </h2>
+              <h2 style="margin-top: 15px;" class="col-sm-6">Balance : <span style="color: green">{{ account.account_balance}} $</span>
+              </h2>
+
+              <div class="col-sm-12" style="text-align: left;margin-top: 15px"><h5>Offer Available : <b>{{
+                account.hasOwnProperty('offers') && account.offers.length > 0 ?
+                'Yes' : 'No' }} </b></h5></div>
+              <div class="col-sm-12" *ngIf="account.hasOwnProperty('offers')">
+                <div class="col-sm-12" *ngFor="let offer of account.offers">
+                  <div class="row">
+                    <div class="col-sm-2" style="text-align: right"><h5> Category : </h5></div>
+                    <div class="col-sm-2" style="text-align: left"><h5><b>{{ offer.category }}</b></h5></div>
+                    <div class="col-sm-2" style="text-align: right"><h5> Offer Id : </h5></div>
+                    <div class="col-sm-2" style="text-align: left"><h5><b>{{ offer.offer_id }}</b></h5></div>
+                    <div class="col-sm-2" style="text-align: right"><h5> Discount : </h5></div>
+                    <div class="col-sm-2" style="text-align: left"><h5><b>{{ offer.discount }}</b></h5></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12" style="text-align: left;margin-top: 10px"><h5>Offer Accepted : <b>{{
+                account.hasOwnProperty('applied_offers') && account.applied_offers.length > 0 ?
+                'Yes' : 'No' }} </b></h5></div>
+              <div class="col-sm-12" *ngIf="account.hasOwnProperty('applied_offers')">
+                <div class="col-sm-12" *ngFor="let aoffer of account.applied_offers">
+                  <div class="row">
+                    <div class="col-sm-2" style="text-align: right"><h5> Category : </h5></div>
+                    <div class="col-sm-2" style="text-align: left"><h5><b>{{ aoffer.category }}</b></h5></div>
+                    <div class="col-sm-2" style="text-align: right"><h5> Offer Id : </h5></div>
+                    <div class="col-sm-2" style="text-align: left"><h5><b>{{ aoffer.offer_id }}</b></h5></div>
+                    <div class="col-sm-2" style="text-align: right"><h5> Discount : </h5></div>
+                    <div class="col-sm-2" style="text-align: left"><h5><b>{{ aoffer.discount }}</b></h5></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

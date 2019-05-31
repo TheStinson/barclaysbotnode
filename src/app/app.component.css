@@ -1,0 +1,66 @@
+.header {
+  width: 100vw;
+  height: 5vh;
+  background: lightblue;
+  display: block;
+  text-align: center;
+  background: black;
+  position: relative;
+}
+
+.shadows:before, .shadows:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  top: 50%;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  border-radius: 100px / 10px;
+}
+
+.header span {
+  font-size: 4vh;
+  font-family: MyWebFont;
+  line-height: 5vh;
+  color: white;
+  -webkit-animation: wordspace 2s;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes wordspace {
+  from {
+    letter-spacing: 5vw;
+    opacity: 0.2;
+  }
+  to {
+    letter-space: 1px;
+    opacity: 1;
+  }
+}
+
+.side-container{
+  margin-top: 2vh;
+  text-align: center;
+}
+
+
+.userCard{
+  position: relative;
+  background: whitesmoke;
+  margin-top: 3vh;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 25px;
+}
+
+.user-wrapper{
+  max-height: 75vh;
+  overflow: overlay;
+}
+
+.btn{
+  cursor: pointer;
+}
+
